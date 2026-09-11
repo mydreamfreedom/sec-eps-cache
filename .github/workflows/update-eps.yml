@@ -1,0 +1,35 @@
+name: Update SEC EPS Cache
+
+on:
+  schedule:
+    # Jam 18:00 UTC = 01:00 WIB - jauh sebelum jam kerja/trading, dan
+    # sebelum trigger harian Journal Apps Script (20:00 WIB) biar data
+    # fresh saat dipakai.
+    - cron: '0 18 * * *'
+  workflow_dispatch: {}   # biar bisa di-trigger manual dari tab Actions
+
+permissions:
+  contents: write
+
+jobs:
+  update-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch EPS/Revenue dari SEC
+        run: python fetch_eps.py
+
+      - name: Commit hasil kalau ada perubahan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add eps_cache.json
+          git diff --staged --quiet || git commit -m "Update EPS cache $(date -u +'%Y-%m-%d')"
+          git push
