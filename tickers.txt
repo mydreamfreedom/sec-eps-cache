@@ -1,0 +1,30 @@
+# Satu ticker per baris. Tambah/hapus ticker di sini kalau BB Screener
+# nemu kandidat baru yang lolos gate. Baris yang diawali # diabaikan.
+AAPL
+MSFT
+WMT
+COST
+LIN
+PEP
+NEE
+BA
+TJX
+APP
+SO
+DUK
+HWM
+WM
+MAR
+CDNS
+CMI
+ORLY
+RCL
+AEP
+HON
+CRH
+O
+SRE
+CIEN
+CARR
+XEL
+LHX
