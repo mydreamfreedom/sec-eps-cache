@@ -1,8 +1,23 @@
 {
+  "AAON": {
+    "avgEPS5Y": 1.322,
+    "lastFetched": "2026-09-12T08:24:21.471146+00:00",
+    "revenueCAGR5Y": null
+  },
   "AAPL": {
     "avgEPS5Y": 4.82,
     "lastFetched": "2026-09-11T12:27:15.046358+00:00",
     "revenueCAGR5Y": null
+  },
+  "AEE": {
+    "avgEPS5Y": 3.842,
+    "lastFetched": "2026-09-12T08:23:57.353634+00:00",
+    "revenueCAGR5Y": 6.1374
+  },
+  "AEIS": {
+    "avgEPS5Y": 3.478,
+    "lastFetched": "2026-09-12T08:24:14.749614+00:00",
+    "revenueCAGR5Y": -11.9654
   },
   "AEP": {
     "avgEPS5Y": 4.398,
@@ -19,6 +34,16 @@
     "lastFetched": "2026-09-12T08:20:06.308023+00:00",
     "revenueCAGR5Y": null
   },
+  "ALNY": {
+    "avgEPS5Y": -7.118,
+    "lastFetched": "2026-09-12T08:23:55.525036+00:00",
+    "revenueCAGR5Y": 124.279
+  },
+  "ANIP": {
+    "avgEPS5Y": -1.396,
+    "lastFetched": "2026-09-12T08:24:31.878122+00:00",
+    "revenueCAGR5Y": 55.7111
+  },
   "APP": {
     "avgEPS5Y": 0.066,
     "lastFetched": "2026-09-11T12:27:24.749273+00:00",
@@ -34,10 +59,20 @@
     "lastFetched": "2026-09-12T08:20:13.540665+00:00",
     "revenueCAGR5Y": -10.9736
   },
+  "CALM": {
+    "avgEPS5Y": 4.87,
+    "lastFetched": "2026-09-12T08:24:27.933406+00:00",
+    "revenueCAGR5Y": 47.1433
+  },
   "CARR": {
     "avgEPS5Y": 2.448,
     "lastFetched": "2026-09-11T12:27:42.553355+00:00",
     "revenueCAGR5Y": null
+  },
+  "CASH": {
+    "avgEPS5Y": 0.956,
+    "lastFetched": "2026-09-12T08:24:30.895162+00:00",
+    "revenueCAGR5Y": 12.4429
   },
   "CASY": {
     "avgEPS5Y": 9.984,
@@ -49,6 +84,21 @@
     "lastFetched": "2026-09-12T08:20:11.005622+00:00",
     "revenueCAGR5Y": null
   },
+  "CENX": {
+    "avgEPS5Y": -0.952,
+    "lastFetched": "2026-09-12T08:24:26.050657+00:00",
+    "revenueCAGR5Y": -39.052
+  },
+  "CG": {
+    "avgEPS5Y": 2.732,
+    "lastFetched": "2026-09-12T08:24:11.958541+00:00",
+    "revenueCAGR5Y": -3.2094
+  },
+  "CHRW": {
+    "avgEPS5Y": 4.868,
+    "lastFetched": "2026-09-12T08:24:08.226607+00:00",
+    "revenueCAGR5Y": 6.8561
+  },
   "CIEN": {
     "avgEPS5Y": 1.966,
     "lastFetched": "2026-09-11T12:27:41.484519+00:00",
@@ -58,6 +108,16 @@
     "avgEPS5Y": 12.274,
     "lastFetched": "2026-09-11T12:27:32.308421+00:00",
     "revenueCAGR5Y": 9.6434
+  },
+  "CMS": {
+    "avgEPS5Y": 3.11,
+    "lastFetched": "2026-09-12T08:24:03.410724+00:00",
+    "revenueCAGR5Y": 3.0229
+  },
+  "COCO": {
+    "avgEPS5Y": 0.4,
+    "lastFetched": "2026-09-12T08:24:29.802631+00:00",
+    "revenueCAGR5Y": null
   },
   "CRH": {
     "avgEPS5Y": 4.2533,
@@ -69,10 +129,25 @@
     "lastFetched": "2026-09-12T08:20:09.936565+00:00",
     "revenueCAGR5Y": null
   },
+  "DD": {
+    "avgEPS5Y": 4.248,
+    "lastFetched": "2026-09-12T08:24:10.085197+00:00",
+    "revenueCAGR5Y": -31.5045
+  },
+  "DHI": {
+    "avgEPS5Y": 10.488,
+    "lastFetched": "2026-09-12T08:23:52.172789+00:00",
+    "revenueCAGR5Y": 19.1521
+  },
   "DOV": {
     "avgEPS5Y": 6.398,
     "lastFetched": "2026-09-12T08:19:53.874768+00:00",
     "revenueCAGR5Y": -72.9007
+  },
+  "DTE": {
+    "avgEPS5Y": 6.068,
+    "lastFetched": "2026-09-12T08:24:00.071061+00:00",
+    "revenueCAGR5Y": 3.9357
   },
   "DUK": {
     "avgEPS5Y": 3.686,
@@ -84,10 +159,30 @@
     "lastFetched": "2026-09-12T08:19:59.117298+00:00",
     "revenueCAGR5Y": 7.253
   },
+  "ETR": {
+    "avgEPS5Y": 5.394,
+    "lastFetched": "2026-09-12T08:23:50.320600+00:00",
+    "revenueCAGR5Y": 4.1718
+  },
+  "EXC": {
+    "avgEPS5Y": 2.562,
+    "lastFetched": "2026-09-12T08:23:51.206746+00:00",
+    "revenueCAGR5Y": -10.8769
+  },
   "FTAI": {
     "avgEPS5Y": 0.38,
     "lastFetched": "2026-09-12T08:20:00.222832+00:00",
     "revenueCAGR5Y": 86.7924
+  },
+  "GNRC": {
+    "avgEPS5Y": 5.3,
+    "lastFetched": "2026-09-12T08:24:15.703244+00:00",
+    "revenueCAGR5Y": null
+  },
+  "HII": {
+    "avgEPS5Y": 15.082,
+    "lastFetched": "2026-09-12T08:24:16.660049+00:00",
+    "revenueCAGR5Y": 6.5133
   },
   "HON": {
     "avgEPS5Y": 7.756,
@@ -119,6 +214,16 @@
     "lastFetched": "2026-09-12T08:20:21.926765+00:00",
     "revenueCAGR5Y": 17.4293
   },
+  "IRTC": {
+    "avgEPS5Y": -3.024,
+    "lastFetched": "2026-09-12T08:24:26.958657+00:00",
+    "revenueCAGR5Y": null
+  },
+  "KTOS": {
+    "avgEPS5Y": 0.08,
+    "lastFetched": "2026-09-12T08:24:19.461629+00:00",
+    "revenueCAGR5Y": 86.5125
+  },
   "LASR": {
     "avgEPS5Y": -0.746,
     "lastFetched": "2026-09-12T08:20:17.511588+00:00",
@@ -139,6 +244,11 @@
     "lastFetched": "2026-09-12T08:20:19.667872+00:00",
     "revenueCAGR5Y": null
   },
+  "LNT": {
+    "avgEPS5Y": 2.588,
+    "lastFetched": "2026-09-12T08:24:09.199904+00:00",
+    "revenueCAGR5Y": 2.5018
+  },
   "LVS": {
     "avgEPS5Y": 0.806,
     "lastFetched": "2026-09-12T08:19:52.608005+00:00",
@@ -148,6 +258,11 @@
     "avgEPS5Y": 4.748,
     "lastFetched": "2026-09-11T12:27:30.202678+00:00",
     "revenueCAGR5Y": 3.1185
+  },
+  "MIDD": {
+    "avgEPS5Y": 6.814,
+    "lastFetched": "2026-09-12T08:24:24.258309+00:00",
+    "revenueCAGR5Y": null
   },
   "MSFT": {
     "avgEPS5Y": 8.988,
@@ -159,10 +274,20 @@
     "lastFetched": "2026-09-11T12:27:21.150931+00:00",
     "revenueCAGR5Y": 0.1178
   },
+  "NI": {
+    "avgEPS5Y": 1.026,
+    "lastFetched": "2026-09-12T08:24:06.223160+00:00",
+    "revenueCAGR5Y": -5.1648
+  },
   "NRG": {
     "avgEPS5Y": 6.372,
     "lastFetched": "2026-09-12T08:19:55.053214+00:00",
     "revenueCAGR5Y": 30.8868
+  },
+  "NXST": {
+    "avgEPS5Y": 14.99,
+    "lastFetched": "2026-09-12T08:24:23.354517+00:00",
+    "revenueCAGR5Y": null
   },
   "NXT": {
     "avgEPS5Y": 0.8575,
@@ -184,10 +309,40 @@
     "lastFetched": "2026-09-11T12:27:33.774609+00:00",
     "revenueCAGR5Y": null
   },
+  "OSIS": {
+    "avgEPS5Y": 5.45,
+    "lastFetched": "2026-09-12T08:24:28.916626+00:00",
+    "revenueCAGR5Y": 1.1365
+  },
+  "PNW": {
+    "avgEPS5Y": 4.756,
+    "lastFetched": "2026-09-12T08:24:13.863410+00:00",
+    "revenueCAGR5Y": 7.8479
+  },
+  "POWL": {
+    "avgEPS5Y": 1.594,
+    "lastFetched": "2026-09-12T08:24:20.606590+00:00",
+    "revenueCAGR5Y": -4.8892
+  },
   "RCL": {
     "avgEPS5Y": -8.226,
     "lastFetched": "2026-09-11T12:27:34.905706+00:00",
     "revenueCAGR5Y": -28.1515
+  },
+  "RL": {
+    "avgEPS5Y": 5.738,
+    "lastFetched": "2026-09-12T08:24:04.316954+00:00",
+    "revenueCAGR5Y": 1.8614
+  },
+  "ROAD": {
+    "avgEPS5Y": 0.672,
+    "lastFetched": "2026-09-12T08:24:22.468679+00:00",
+    "revenueCAGR5Y": 17.4064
+  },
+  "SAIA": {
+    "avgEPS5Y": 9.128,
+    "lastFetched": "2026-09-12T08:24:18.473848+00:00",
+    "revenueCAGR5Y": 3.2011
   },
   "SO": {
     "avgEPS5Y": 3.31,
@@ -209,25 +364,65 @@
     "lastFetched": "2026-09-12T08:20:18.558030+00:00",
     "revenueCAGR5Y": null
   },
+  "TDY": {
+    "avgEPS5Y": 13.284,
+    "lastFetched": "2026-09-12T08:23:58.280623+00:00",
+    "revenueCAGR5Y": 22.2939
+  },
   "TJX": {
     "avgEPS5Y": 2.454,
     "lastFetched": "2026-09-11T12:27:23.664344+00:00",
     "revenueCAGR5Y": 8.0311
+  },
+  "TLN": {
+    "avgEPS5Y": 0.59,
+    "lastFetched": "2026-09-12T08:24:12.883185+00:00",
+    "revenueCAGR5Y": -60.8287
   },
   "TPR": {
     "avgEPS5Y": 2.232,
     "lastFetched": "2026-09-12T08:19:56.176721+00:00",
     "revenueCAGR5Y": null
   },
+  "TSN": {
+    "avgEPS5Y": 5.286,
+    "lastFetched": "2026-09-12T08:24:07.197682+00:00",
+    "revenueCAGR5Y": 5.6746
+  },
   "TXT": {
     "avgEPS5Y": 3.58,
     "lastFetched": "2026-09-12T08:20:01.394053+00:00",
     "revenueCAGR5Y": 0.0971
   },
+  "UTHR": {
+    "avgEPS5Y": 10.804,
+    "lastFetched": "2026-09-12T08:24:02.448848+00:00",
+    "revenueCAGR5Y": 6.0179
+  },
+  "VRT": {
+    "avgEPS5Y": -0.156,
+    "lastFetched": "2026-09-12T08:23:48.661580+00:00",
+    "revenueCAGR5Y": null
+  },
+  "WEC": {
+    "avgEPS5Y": 4.03,
+    "lastFetched": "2026-09-12T08:23:53.659718+00:00",
+    "revenueCAGR5Y": 4.2708
+  },
+  "WLFC": {
+    "avgEPS5Y": 4.59,
+    "lastFetched": "2026-09-12T08:24:33.719792+00:00",
+    "revenueCAGR5Y": 18.4982
+  },
   "WM": {
     "avgEPS5Y": 4.554,
     "lastFetched": "2026-09-11T12:27:29.038959+00:00",
     "revenueCAGR5Y": -0.7885
+  },
+  "WWD": {
+    "avgEPS5Y": 3.486,
+    "lastFetched": "2026-09-12T08:24:05.282250+00:00",
+    "revenueCAGR5Y": null
   },
   "WYNN": {
     "avgEPS5Y": -4.454,
