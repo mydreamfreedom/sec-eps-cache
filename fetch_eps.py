@@ -16,8 +16,54 @@ Alur:
 PENTING: ganti CONTACT_EMAIL di bawah ke email asli kamu sebelum commit.
 SEC EDGAR mewajibkan User-Agent berisi identitas asli (kebijakan resmi
 mereka, bukan proteksi tambahan dari kita).
+
+============================================================
+FIX v2 (lihat CATATAN BUG di bawah) - Revenue CAGR 5Y ngaco
+============================================================
+BUG LAMA: `years = len(sorted_asc) - 1` menghitung JUMLAH DATA POINT,
+bukan rentang tahun kalender sebenarnya. Kalau tag "Revenues" di SEC
+punya gap (perusahaan pindah tag pelaporan, contoh umum: dari "Revenues"
+ke "RevenueFromContractWithCustomerExcludingAssessedTax" sekitar
+2018-2019), hasilnya cuma 2 data point valid padahal jaraknya beneran
+5-6 tahun kalender. years dihitung "1" padahal harusnya "5-6" -> growth
+5 tahun ke-kompres jadi growth 1 tahun -> CAGR meledak jadi ratusan/
+ribuan persen (ini penyebab APP=4908%, LHX=664%, dll di screenshot).
+
+FIX: years dihitung dari SELISIH fy (fiscal year) beneran antara titik
+tertua & terbaru, bukan dari jumlah titik data. Ditambah sanity cap:
+kalau hasil CAGR masih implausible (>150% atau <-90%), di-set None +
+di-flag di reason, daripada lolos ke sheet sebagai angka ngaco.
+============================================================
+
+============================================================
+FIX v3 - AUTO TICKER SYNC (gak perlu edit tickers.txt manual lagi)
+============================================================
+Sebelumnya: ticker baru yang lolos gate BB Screener harus ditambahin
+MANUAL ke tickers.txt via GitHub web UI tiap kali ada kandidat baru.
+
+SEKARANG: load_tickers() narik daftar Symbol OTOMATIS dari tab
+BB_SCREENER_ANALYSIS di Google Sheets (via fitur "Publish to web" jadi
+CSV - link publik read-only, gak butuh API key/token). tickers.txt masih
+dipertahankan sebagai watchlist TAMBAHAN manual (opsional, misal mau
+selalu track ticker tertentu meski belum tentu lolos gate) - hasil akhir
+adalah gabungan (union) keduanya, di-dedupe.
+
+SETUP SEKALI (di Google Sheets):
+1. File > Share > Publish to web
+2. Pilih sheet "BB_SCREENER_ANALYSIS" (bukan "Entire Document")
+3. Format: Comma-separated values (.csv)
+4. Klik Publish, copy link yang muncul
+5. Paste link itu ke SHEET_CSV_URL di bawah, commit ke repo
+
+CATATAN PRIVASI: link publish-to-web itu PUBLIK - siapa aja yang punya
+link bisa lihat isi kolom (symbol, skor, dll), meski gak ke-index Google
+search. Kalau data ini sensitif, jangan pakai cara ini - tetap manual
+edit tickers.txt aja.
+============================================================
 """
 
+import csv
+import io
 import json
 import time
 import urllib.request
@@ -33,6 +79,18 @@ LOOKBACK_YEARS = 5
 REFRESH_DAYS = 30
 CALL_DELAY_SEC = 0.35
 MAX_RETRIES = 3
+
+# FIX v3: GANTI link ini ke link "Publish to web" (CSV) dari tab
+# BB_SCREENER_ANALYSIS di Sheets kamu. Biarkan string kosong "" kalau
+# belum di-setup - fetch_eps.py bakal fallback ke tickers.txt doang.
+SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3sH_eVmw9U4MiSNXitDOJtVZ8CPOdPTtqrlMGRgx3j1BVfTQW7YdYKYK9VY9Ni4IVRHyZcSQLnqzC/pub?gid=208123030&single=true&output=csv"  # contoh: "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=0&single=true&output=csv"
+
+# FIX v2: sanity cap buat Revenue CAGR - di atas ini dianggap implausible
+# buat perusahaan market cap $10B+ (gate BB Screener), kemungkinan besar
+# artefak gap data/tag switching, bukan growth beneran.
+MAX_PLAUSIBLE_CAGR_PCT = 150
+MIN_PLAUSIBLE_CAGR_PCT = -90
+MIN_YEAR_SPAN = 2  # minimal rentang 2 tahun kalender biar CAGR ada artinya
 
 OUTPUT_FILE = "eps_cache.json"
 TICKERS_FILE = "tickers.txt"
@@ -57,14 +115,49 @@ def http_get_json(url, retries=MAX_RETRIES):
     return None, 0
 
 
-def load_tickers():
+def load_tickers_from_txt():
     tickers = []
-    with open(TICKERS_FILE, "r") as f:
-        for line in f:
-            line = line.strip().upper()
-            if line and not line.startswith("#"):
-                tickers.append(line)
+    try:
+        with open(TICKERS_FILE, "r") as f:
+            for line in f:
+                line = line.strip().upper()
+                if line and not line.startswith("#"):
+                    tickers.append(line)
+    except FileNotFoundError:
+        pass
     return tickers
+
+
+def load_tickers_from_sheet():
+    """FIX v3: narik daftar Symbol dari link Publish-to-web (CSV) tab
+    BB_SCREENER_ANALYSIS. Return [] kalau SHEET_CSV_URL kosong atau gagal
+    fetch - gak bikin seluruh workflow gagal, cuma fallback ke tickers.txt."""
+    if not SHEET_CSV_URL:
+        return []
+    req = urllib.request.Request(SHEET_CSV_URL, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            text = resp.read().decode("utf-8")
+    except Exception as e:
+        print(f"  GAGAL fetch ticker dari Google Sheet: {e}")
+        return []
+
+    reader = csv.DictReader(io.StringIO(text))
+    tickers = []
+    for row in reader:
+        sym = (row.get("Symbol") or "").strip().upper()
+        if sym:
+            tickers.append(sym)
+    return tickers
+
+
+def load_tickers():
+    manual = load_tickers_from_txt()
+    from_sheet = load_tickers_from_sheet()
+    print(f"Ticker dari tickers.txt (manual watchlist tambahan): {len(manual)}")
+    print(f"Ticker dari Google Sheet (auto, BB_SCREENER_ANALYSIS)  : {len(from_sheet)}")
+    combined = sorted(set(manual) | set(from_sheet))
+    return combined
 
 
 def load_cik_map():
@@ -123,6 +216,33 @@ def fetch_concept_history(cik, tag):
     return [{"fy": p["fy"], "val": p["val"]} for p in sorted_points], None
 
 
+def calc_revenue_cagr_5y(rev_points):
+    """
+    FIX v2: years dihitung dari SELISIH fy (fiscal year) beneran antara
+    titik tertua & terbaru - bukan dari jumlah titik data (len-1). Ini
+    yang bikin CAGR immune terhadap gap data akibat tag switching SEC.
+    Return (cagr_or_None, reason_if_none).
+    """
+    if not rev_points or len(rev_points) < 2:
+        return None, "insufficient_revenue_points"
+
+    sorted_asc = sorted(rev_points, key=lambda p: p["fy"])
+    oldest, newest = sorted_asc[0], sorted_asc[-1]
+    years = newest["fy"] - oldest["fy"]  # <- FIX: fy gap, bukan len-1
+
+    if years < MIN_YEAR_SPAN:
+        return None, f"year_span_too_small({years})"
+    if oldest["val"] <= 0 or newest["val"] <= 0:
+        return None, "non_positive_base_or_end"
+
+    cagr = ((newest["val"] / oldest["val"]) ** (1 / years) - 1) * 100
+
+    if cagr > MAX_PLAUSIBLE_CAGR_PCT or cagr < MIN_PLAUSIBLE_CAGR_PCT:
+        return None, f"implausible_cagr({round(cagr, 1)}%,years={years})"
+
+    return round(cagr, 4), None
+
+
 def fetch_ticker_financials(symbol, cik):
     eps_points, reason = fetch_concept_history(cik, "EarningsPerShareDiluted")
     time.sleep(CALL_DELAY_SEC)
@@ -135,19 +255,15 @@ def fetch_ticker_financials(symbol, cik):
     eps_vals = [p["val"] for p in eps_points]
     avg_eps_5y = sum(eps_vals) / len(eps_vals)
 
-    revenue_cagr_5y = None
     rev_points, _ = fetch_concept_history(cik, "Revenues")
     time.sleep(CALL_DELAY_SEC)
-    if rev_points and len(rev_points) >= 2:
-        sorted_asc = sorted(rev_points, key=lambda p: p["fy"])
-        oldest, newest = sorted_asc[0]["val"], sorted_asc[-1]["val"]
-        years = len(sorted_asc) - 1
-        if oldest > 0 and newest > 0 and years > 0:
-            revenue_cagr_5y = ((newest / oldest) ** (1 / years) - 1) * 100
+    revenue_cagr_5y, cagr_reason = calc_revenue_cagr_5y(rev_points)
+    if revenue_cagr_5y is None and cagr_reason:
+        print(f"  (info) revenueCAGR5Y skipped: {cagr_reason}")
 
     return {
         "avgEPS5Y": round(avg_eps_5y, 4),
-        "revenueCAGR5Y": round(revenue_cagr_5y, 4) if revenue_cagr_5y is not None else None,
+        "revenueCAGR5Y": revenue_cagr_5y,
         "lastFetched": datetime.now(timezone.utc).isoformat(),
     }, None
 
