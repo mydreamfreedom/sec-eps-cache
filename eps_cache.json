@@ -54,6 +54,11 @@
     "lastFetched": "2026-09-11T12:27:24.749273+00:00",
     "revenueCAGR5Y": 16.6676
   },
+  "ATO": {
+    "avgEPS5Y": 2.0867,
+    "lastFetched": "2026-09-22T05:20:07.503260+00:00",
+    "revenueCAGR5Y": 8.3876
+  },
   "BA": {
     "avgEPS5Y": -8.224,
     "lastFetched": "2026-09-11T12:27:22.660657+00:00",
@@ -138,6 +143,11 @@
     "avgEPS5Y": 0.4,
     "lastFetched": "2026-09-12T08:24:29.802631+00:00",
     "revenueCAGR5Y": null
+  },
+  "COST": {
+    "avgEPS5Y": 2.76,
+    "lastFetched": "2026-09-22T05:20:10.395757+00:00",
+    "revenueCAGR5Y": 8.8682
   },
   "CRH": {
     "avgEPS5Y": 4.2533,
@@ -553,5 +563,10 @@
     "avgEPS5Y": 2.954,
     "lastFetched": "2026-09-11T12:27:43.559666+00:00",
     "revenueCAGR5Y": 2.333
+  },
+  "YUM": {
+    "avgEPS5Y": 2.1867,
+    "lastFetched": "2026-09-22T05:20:25.033998+00:00",
+    "revenueCAGR5Y": 5.6857
   }
 }
