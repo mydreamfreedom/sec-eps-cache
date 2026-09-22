@@ -83,7 +83,7 @@ MAX_RETRIES = 3
 # FIX v3: GANTI link ini ke link "Publish to web" (CSV) dari tab
 # BB_SCREENER_ANALYSIS di Sheets kamu. Biarkan string kosong "" kalau
 # belum di-setup - fetch_eps.py bakal fallback ke tickers.txt doang.
-SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3sH_eVmw9U4MiSNXitDOJtVZ8CPOdPTtqrlMGRgx3j1BVfTQW7YdYKYK9VY9Ni4IVRHyZcSQLnqzC/pub?gid=208123030&single=true&output=csv"  # contoh: "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=0&single=true&output=csv"
+SHEET_CSV_URL = ""  # contoh: "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=0&single=true&output=csv"
 
 # FIX v2: sanity cap buat Revenue CAGR - di atas ini dianggap implausible
 # buat perusahaan market cap $10B+ (gate BB Screener), kemungkinan besar
@@ -190,6 +190,27 @@ def is_fresh(entry):
 
 
 def fetch_concept_history(cik, tag):
+    """
+    FIX v4 (lihat CATATAN BUG di bawah): dedup sekarang berdasarkan periode
+    AKTUAL data (end date), bukan field "fy" dari SEC.
+
+    CATATAN BUG (root cause avgEPS5Y APP jadi 0.066 padahal harusnya ~2.97):
+    Field "fy" dari SEC itu BUKAN "tahun yang direpresentasikan data ini" -
+    itu "tahun fiskal FILING/DOKUMEN yang memuat data ini". Satu 10-K
+    biasa lapor 2-3 tahun EPS sekaligus (tahun berjalan + tahun
+    pembanding), dan SEMUA angka itu ditag "fy" yang SAMA (fy filing-nya),
+    walau "start"/"end" masing-masing beda tahun. Dedup lama
+    (`by_fy = {}; by_fy[p["fy"]] = p`) cuma nyimpen SATU dari 2-3 angka
+    itu per "fy" - dan yang ke-simpen tergantung urutan acak di response
+    JSON, bisa aja malah nyimpen angka comparative dari tahun lama yang
+    EPS-nya jauh lebih kecil (persis pola yang bikin avgEPS5Y APP jadi
+    0.066 - ke-drag angka-angka kecil dari tahun awal APP publik).
+
+    FIX: key dedup pakai "end" date (tanggal akhir periode aktual), bukan
+    "fy". Ditambah filter panjang periode ~340-380 hari biar cuma ambil
+    data yang beneran full-year (bukan interim/partial yang ke-tag form
+    10-K karena alasan lain).
+    """
     cik_padded = str(cik).zfill(10)
     url = f"{COMPANYCONCEPT_BASE}/CIK{cik_padded}/us-gaap/{tag}.json"
     data, code = http_get_json(url)
@@ -202,18 +223,32 @@ def fetch_concept_history(cik, tag):
         return None, "no_units"
     points = units_obj[unit_key]
 
-    annual = [p for p in points if p.get("fp") == "FY" and p.get("form") in ("10-K", "10-K/A")]
+    def period_days(p):
+        try:
+            s = datetime.fromisoformat(p["start"])
+            e = datetime.fromisoformat(p["end"])
+            return (e - s).days
+        except Exception:
+            return 0
+
+    annual = [
+        p for p in points
+        if p.get("form") in ("10-K", "10-K/A")
+        and p.get("start") and p.get("end")
+        and 340 <= period_days(p) <= 380
+    ]
     if not annual:
         return None, "no_annual_data"
 
-    by_fy = {}
+    # FIX v4: dedup by ACTUAL period end date, bukan "fy" filing.
+    by_end = {}
     for p in annual:
-        fy = p["fy"]
-        if fy not in by_fy or p["filed"] > by_fy[fy]["filed"]:
-            by_fy[fy] = p
+        key = p["end"]
+        if key not in by_end or p["filed"] > by_end[key]["filed"]:
+            by_end[key] = p
 
-    sorted_points = sorted(by_fy.values(), key=lambda p: p["fy"], reverse=True)[:LOOKBACK_YEARS]
-    return [{"fy": p["fy"], "val": p["val"]} for p in sorted_points], None
+    sorted_points = sorted(by_end.values(), key=lambda p: p["end"], reverse=True)[:LOOKBACK_YEARS]
+    return [{"fy": int(p["end"][:4]), "val": p["val"], "end": p["end"]} for p in sorted_points], None
 
 
 def calc_revenue_cagr_5y(rev_points):
