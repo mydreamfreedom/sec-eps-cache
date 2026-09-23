@@ -39,6 +39,11 @@
     "lastFetched": "2026-09-22T05:25:56.038692+00:00",
     "revenueCAGR5Y": 67.7548
   },
+  "ANDE": {
+    "avgEPS5Y": 2.674,
+    "lastFetched": "2026-09-23T07:43:14.796177+00:00",
+    "revenueCAGR5Y": -3.3415
+  },
   "ANIP": {
     "avgEPS5Y": -0.664,
     "lastFetched": "2026-09-22T05:25:57.272011+00:00",
@@ -53,6 +58,11 @@
     "avgEPS5Y": 2.0867,
     "lastFetched": "2026-09-22T05:26:00.657121+00:00",
     "revenueCAGR5Y": 8.3876
+  },
+  "AXP": {
+    "avgEPS5Y": 12.094,
+    "lastFetched": "2026-09-23T07:43:16.687811+00:00",
+    "revenueCAGR5Y": -0.9671
   },
   "BA": {
     "avgEPS5Y": -7.0,
@@ -164,20 +174,45 @@
     "lastFetched": "2026-09-22T05:26:28.062743+00:00",
     "revenueCAGR5Y": 10.4068
   },
+  "ED": {
+    "avgEPS5Y": 5.32,
+    "lastFetched": "2026-09-23T07:43:20.494316+00:00",
+    "revenueCAGR5Y": 5.4624
+  },
   "EIX": {
     "avgEPS5Y": 4.314,
     "lastFetched": "2026-09-22T05:26:29.344091+00:00",
     "revenueCAGR5Y": 6.6969
+  },
+  "EQT": {
+    "avgEPS5Y": 1.918,
+    "lastFetched": "2026-09-23T07:43:22.905819+00:00",
+    "revenueCAGR5Y": 29.5942
+  },
+  "ES": {
+    "avgEPS5Y": 2.632,
+    "lastFetched": "2026-09-23T07:43:23.964277+00:00",
+    "revenueCAGR5Y": 8.2579
   },
   "ETR": {
     "avgEPS5Y": 4.026,
     "lastFetched": "2026-09-22T05:26:31.665567+00:00",
     "revenueCAGR5Y": 1.7732
   },
+  "EVRG": {
+    "avgEPS5Y": 3.544,
+    "lastFetched": "2026-09-23T07:43:25.964834+00:00",
+    "revenueCAGR5Y": 1.637
+  },
   "EXC": {
     "avgEPS5Y": 2.562,
     "lastFetched": "2026-09-22T05:26:32.836481+00:00",
     "revenueCAGR5Y": 7.8376
+  },
+  "EXE": {
+    "avgEPS5Y": -188.992,
+    "lastFetched": "2026-09-23T07:43:27.021782+00:00",
+    "revenueCAGR5Y": 18.2668
   },
   "FTAI": {
     "avgEPS5Y": 1.292,
@@ -188,6 +223,11 @@
     "avgEPS5Y": 5.014,
     "lastFetched": "2026-09-22T05:26:37.714169+00:00",
     "revenueCAGR5Y": null
+  },
+  "HIG": {
+    "avgEPS5Y": 8.748,
+    "lastFetched": "2026-09-23T07:43:31.217105+00:00",
+    "revenueCAGR5Y": 6.0947
   },
   "HII": {
     "avgEPS5Y": 14.872,
@@ -234,6 +274,11 @@
     "lastFetched": "2026-09-22T05:26:52.082169+00:00",
     "revenueCAGR5Y": -2.8503
   },
+  "L": {
+    "avgEPS5Y": 6.01,
+    "lastFetched": "2026-09-23T07:43:35.955354+00:00",
+    "revenueCAGR5Y": 5.9281
+  },
   "LASR": {
     "avgEPS5Y": -0.914,
     "lastFetched": "2026-09-22T05:26:53.213800+00:00",
@@ -279,6 +324,11 @@
     "lastFetched": "2026-09-22T05:27:02.891147+00:00",
     "revenueCAGR5Y": 1.6937
   },
+  "MYRG": {
+    "avgEPS5Y": 4.924,
+    "lastFetched": "2026-09-23T07:43:36.995319+00:00",
+    "revenueCAGR5Y": null
+  },
   "NEE": {
     "avgEPS5Y": 2.836,
     "lastFetched": "2026-09-22T05:27:04.021031+00:00",
@@ -288,6 +338,11 @@
     "avgEPS5Y": 1.604,
     "lastFetched": "2026-09-22T05:27:05.246011+00:00",
     "revenueCAGR5Y": 1.3205
+  },
+  "NKTR": {
+    "avgEPS5Y": -4.938,
+    "lastFetched": "2026-09-23T07:43:38.040493+00:00",
+    "revenueCAGR5Y": 19.8938
   },
   "NRG": {
     "avgEPS5Y": 4.396,
@@ -329,6 +384,11 @@
     "lastFetched": "2026-09-22T05:27:20.258200+00:00",
     "revenueCAGR5Y": 8.8501
   },
+  "POWI": {
+    "avgEPS5Y": 1.504,
+    "lastFetched": "2026-09-23T07:43:42.911365+00:00",
+    "revenueCAGR5Y": -10.8866
+  },
   "POWL": {
     "avgEPS5Y": 6.57,
     "lastFetched": "2026-09-22T05:27:21.369565+00:00",
@@ -349,6 +409,11 @@
     "lastFetched": "2026-09-22T05:27:25.976078+00:00",
     "revenueCAGR5Y": 11.4068
   },
+  "RRR": {
+    "avgEPS5Y": 2.958,
+    "lastFetched": "2026-09-23T07:43:45.718357+00:00",
+    "revenueCAGR5Y": 5.5945
+  },
   "SAIA": {
     "avgEPS5Y": 11.834,
     "lastFetched": "2026-09-22T05:27:28.133408+00:00",
@@ -364,6 +429,11 @@
     "lastFetched": "2026-09-22T05:27:30.411330+00:00",
     "revenueCAGR5Y": 1.6041
   },
+  "STRA": {
+    "avgEPS5Y": 3.442,
+    "lastFetched": "2026-09-23T07:43:47.623836+00:00",
+    "revenueCAGR5Y": 31.2431
+  },
   "SUPN": {
     "avgEPS5Y": 0.536,
     "lastFetched": "2026-09-22T05:27:31.484866+00:00",
@@ -373,6 +443,11 @@
     "avgEPS5Y": 3.37,
     "lastFetched": "2026-09-22T05:27:32.570206+00:00",
     "revenueCAGR5Y": null
+  },
+  "TCBI": {
+    "avgEPS5Y": 4.478,
+    "lastFetched": "2026-09-23T07:43:48.595682+00:00",
+    "revenueCAGR5Y": -48.7824
   },
   "TDY": {
     "avgEPS5Y": 16.232,
@@ -389,6 +464,11 @@
     "lastFetched": "2026-09-22T05:27:35.921265+00:00",
     "revenueCAGR5Y": -5.8132
   },
+  "TPL": {
+    "avgEPS5Y": 14.698,
+    "lastFetched": "2026-09-23T07:43:49.536515+00:00",
+    "revenueCAGR5Y": null
+  },
   "TPR": {
     "avgEPS5Y": 3.728,
     "lastFetched": "2026-09-22T05:27:36.995939+00:00",
@@ -398,6 +478,11 @@
     "avgEPS5Y": 3.794,
     "lastFetched": "2026-09-22T05:27:38.102568+00:00",
     "revenueCAGR5Y": 3.7156
+  },
+  "TTWO": {
+    "avgEPS5Y": -10.532,
+    "lastFetched": "2026-09-23T07:43:50.612757+00:00",
+    "revenueCAGR5Y": null
   },
   "TXT": {
     "avgEPS5Y": 4.262,
@@ -409,20 +494,45 @@
     "lastFetched": "2026-09-23T07:40:38.650036+00:00",
     "revenueCAGR5Y": 31.3882
   },
+  "UPS": {
+    "avgEPS5Y": 9.798,
+    "lastFetched": "2026-09-23T07:43:51.588823+00:00",
+    "revenueCAGR5Y": 4.4055
+  },
   "UTHR": {
     "avgEPS5Y": 19.474,
     "lastFetched": "2026-09-22T05:27:40.407051+00:00",
     "revenueCAGR5Y": -1.8571
+  },
+  "VC": {
+    "avgEPS5Y": 8.722,
+    "lastFetched": "2026-09-23T07:43:52.718567+00:00",
+    "revenueCAGR5Y": 7.9668
+  },
+  "VNOM": {
+    "avgEPS5Y": 2.34,
+    "lastFetched": "2026-09-23T07:43:54.643826+00:00",
+    "revenueCAGR5Y": 36.1184
   },
   "VRT": {
     "avgEPS5Y": 1.234,
     "lastFetched": "2026-09-22T05:27:42.463977+00:00",
     "revenueCAGR5Y": null
   },
+  "VST": {
+    "avgEPS5Y": 1.362,
+    "lastFetched": "2026-09-23T07:43:55.701578+00:00",
+    "revenueCAGR5Y": 10.0871
+  },
   "WEC": {
     "avgEPS5Y": 4.484,
     "lastFetched": "2026-09-22T05:27:43.700726+00:00",
     "revenueCAGR5Y": 4.1907
+  },
+  "WFRD": {
+    "avgEPS5Y": 2.454,
+    "lastFetched": "2026-09-23T07:43:56.710973+00:00",
+    "revenueCAGR5Y": -4.381
   },
   "WLFC": {
     "avgEPS5Y": 7.458,
