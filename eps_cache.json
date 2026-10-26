@@ -424,6 +424,11 @@
     "lastFetched": "2026-10-22T21:09:35.539346+00:00",
     "revenueCAGR5Y": 6.8794
   },
+  "RMBS": {
+    "avgEPS5Y": 1.36,
+    "lastFetched": "2026-10-26T22:13:45.730063+00:00",
+    "revenueCAGR5Y": null
+  },
   "ROAD": {
     "avgEPS5Y": 0.978,
     "lastFetched": "2026-10-22T21:09:37.825282+00:00",
