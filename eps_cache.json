@@ -94,6 +94,11 @@
     "lastFetched": "2026-10-22T21:08:15.254187+00:00",
     "revenueCAGR5Y": 7.9068
   },
+  "CDNS": {
+    "avgEPS5Y": 3.464,
+    "lastFetched": "2026-10-28T22:06:40.851782+00:00",
+    "revenueCAGR5Y": null
+  },
   "CELC": {
     "avgEPS5Y": -2.9875,
     "lastFetched": "2026-10-22T21:08:17.294860+00:00",
@@ -224,6 +229,11 @@
     "lastFetched": "2026-10-22T21:08:44.097208+00:00",
     "revenueCAGR5Y": 65.3318
   },
+  "FTV": {
+    "avgEPS5Y": 2.05,
+    "lastFetched": "2026-10-28T22:06:46.297962+00:00",
+    "revenueCAGR5Y": 9.5348
+  },
   "GD": {
     "avgEPS5Y": 12.968,
     "lastFetched": "2026-09-29T01:58:04.115498+00:00",
@@ -248,6 +258,11 @@
     "avgEPS5Y": 7.944,
     "lastFetched": "2026-10-22T21:08:48.515503+00:00",
     "revenueCAGR5Y": 1.3736
+  },
+  "HUBB": {
+    "avgEPS5Y": 12.434,
+    "lastFetched": "2026-10-28T22:06:48.272334+00:00",
+    "revenueCAGR5Y": null
   },
   "HWKN": {
     "avgEPS5Y": 3.366,
